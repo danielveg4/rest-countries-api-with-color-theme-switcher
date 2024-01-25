@@ -1,12 +1,13 @@
+import { BrowserRouter } from "react-router-dom";
 import Header from "./components/header/header";
-import Main from "./components/main/Main";
+import Router from "./router/Router";
 
 const App = () => {
 	return (
-		<>
+		<BrowserRouter>
 			<Header />
-			<Main />
-		</>
+			<Router />
+		</BrowserRouter>
   	);
 };
 

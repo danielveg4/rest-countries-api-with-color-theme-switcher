@@ -1,16 +1,18 @@
 import CountryCard from "../countryCard/CountryCard";
-import {StyledContainer} from './styles';
+import { StyledContainer } from "./styles";
 
-const Countries = ({ data }) => {
-    return (
+const Countries = ({ data, onCountryClick }) => {
+  return (
     <StyledContainer>
-
-        {data.map((country) => (
-          <CountryCard key={country.alpha3Code} data={country} />
-        ))}
-
+      {data.map((country) => (
+        <CountryCard
+          key={country.alpha3Code}
+          data={country}
+          onCountryClick={onCountryClick} 
+        />
+      ))}
     </StyledContainer>
-    );
-  };
-  
-  export default Countries;
+  );
+};
+
+export default Countries;

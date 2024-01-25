@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Filters from "../filters/Filters";
 import Countries from "../countries/countries";
 import {StyledMain} from './styles';
+import { useNavigate } from "react-router-dom";
 
 const Main = () => {
     const [countries, setCountries] = useState([]);
@@ -11,10 +12,15 @@ const Main = () => {
     const filteredCountries = filterByName(countries, searchBy);
     const filteredByRegion = filterRegion(filteredCountries, regionFilter).slice(0, 8);
   
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchCountries(setCountries);
     }, []);
+
+    const handleCountryClick = (data) => {
+        navigate(`/country/${data.id}`, { state: { country: data } });
+    };
 
     return (
         <StyledMain>
@@ -22,7 +28,7 @@ const Main = () => {
             onSearch={(value) => setSearchBy(value)}
             onRegionChange={(value) => setRegionFilter(value)}
         />
-            <Countries data={filteredByRegion} />
+            <Countries data={filteredByRegion} onCountryClick={handleCountryClick} />
         </StyledMain>
     );
 };
