@@ -8,8 +8,8 @@ const Main = () => {
     const [searchBy, setSearchBy] = useState("");
     const [regionFilter, setRegionFilter] = useState("All");
 
-    const filteredCountries = filterByName(countries, searchBy).slice(0, 8);
-    const filteredByRegion = filterRegion(filteredCountries, regionFilter);
+    const filteredCountries = filterByName(countries, searchBy);
+    const filteredByRegion = filterRegion(filteredCountries, regionFilter).slice(0, 8);
   
 
     useEffect(() => {
